@@ -1,7 +1,9 @@
 from pydantic import BaseModel
 from datetime import datetime
 
+
 class PostOut(BaseModel):
+    id: int
     title: str
-    #author: str
-    #published_at: datetime
+    content: str
+    published_at: datetime | None
