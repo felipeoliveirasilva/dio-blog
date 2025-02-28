@@ -7,7 +7,7 @@ from src.schemas.post import PostIn, PostUpdateIn
 
 class PostService:
     async def read_all(self, published: bool, limit: int, skip: int = 0) -> list[Record]:
-        query = posts.select().limit(limit).offset(skip)
+        query = posts.select().limit(limit).offset(skip).where(posts.c.published == published)
         return await database.fetch_all(query)
 
     async def create(self, post: PostIn) -> int:
